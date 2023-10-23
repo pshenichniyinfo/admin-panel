@@ -9,7 +9,6 @@ class AdminPanelServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        //
     }
 
     public function boot(): void
@@ -30,5 +29,13 @@ class AdminPanelServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../public' => public_path('admin-panel'),
         ], 'public');
+
+        $this->publishes([
+            __DIR__.'/../routes/admin-panel-route.php' => app()->basePath() . '/routes/admin-panel-route.php'
+        ], 'admin-panel-route');
+
+        $this->publishes([
+            __DIR__.'/../routes/admin-panel-route.php' => app()->basePath() . '/routes/admin-panel-route.php'
+        ], 'admin-panel-route');
     }
 }

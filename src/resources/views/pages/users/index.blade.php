@@ -21,7 +21,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->email }}</td>
                         <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('admin.show') }}">
+                            <a class="btn btn-primary btn-sm" href="{{ route('admin.show', [$user]) }}">
                                 <i class="fas fa-folder"></i>
                                 View
                             </a>

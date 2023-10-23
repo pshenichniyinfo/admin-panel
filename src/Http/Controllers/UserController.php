@@ -14,9 +14,9 @@ class UserController extends Controller
         return view('admin-panel::pages.users.index', ['users' => $users]);
     }
 
-    public function show()
+    public function show(User $user)
     {
-
+        return view('admin-panel::pages.users.show', ['user' => $user]);
     }
 
     public function create()

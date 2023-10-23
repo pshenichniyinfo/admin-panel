@@ -2,17 +2,22 @@
 
 namespace Pshenichniyinfo\AdminPanel\database;
 
-use Illuminate\Support\Facades\DB;
+use Pshenichniyinfo\AdminPanel\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class Seeder
 {
     public static function addSuperAdmin(string $email, string $password)
     {
-        DB::table('users')->insert([
+        $user = User::create([
             'name' => 'super-admin',
             'email' => $email,
             'password' => Hash::make($password),
         ]);
+
+        Role::create(['name' => 'super-admin']);
+
+        $user->assignRole('super-admin');
     }
 }
