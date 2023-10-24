@@ -3,7 +3,9 @@ namespace Pshenichniyinfo\AdminPanel\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Pshenichniyinfo\AdminPanel\commands\InstallCommand;
+use Pshenichniyinfo\AdminPanel\View\Components\Menu;
 use Spatie\Permission\PermissionServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AdminPanelServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,10 @@ class AdminPanelServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations', 'admin-panel');
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'admin-panel');
 
+        $this->loadViewComponentsAs('admin-panel', [
+            Menu::class,
+        ]);
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallCommand::class,
@@ -35,7 +41,11 @@ class AdminPanelServiceProvider extends ServiceProvider
         ], 'admin-panel-route');
 
         $this->publishes([
-            __DIR__.'/../routes/admin-panel-route.php' => app()->basePath() . '/routes/admin-panel-route.php'
-        ], 'admin-panel-route');
+            __DIR__.'/../config/admin-panel.php' => config_path('admin-panel.php'),
+        ]);
+
+        Blade::componentNamespace('Pshenichniyinfo\\AdminPanel\\View\\Components', 'admin-panel');
+
+//        Blade::component('menu', Menu::class);
     }
 }

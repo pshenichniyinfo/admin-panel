@@ -36,6 +36,7 @@
                         </li>
                     </ul>
                 </li>
+                <x-menu />
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
