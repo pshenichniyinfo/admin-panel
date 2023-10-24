@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                 </li>
-                <x-menu />
+                <x-admin-panel::menu />
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
