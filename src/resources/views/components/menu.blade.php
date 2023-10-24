@@ -12,14 +12,14 @@
                 <ul class="nav nav-treeview">
                     @foreach($menu['child'] as $child)
                         <li class="nav-item">
-                            <a href="{{ $child['link'] }}" class="nav-link">
+                            <a href="{{ route($child['link']) }}" class="nav-link">
                                 {{ $menu['name'] }}
                             </a>
                         </li>
                     @endforeach
                 </ul>
             @else
-                <a href="{{ $menu['link'] }}" class="nav-link">
+                <a href="{{ route($menu['link']) }}" class="nav-link">
                     <i class="nav-icon fas fa-{{ $menu['icon'] }}"></i>
                     <p>
                         {{ $menu['name'] }}
