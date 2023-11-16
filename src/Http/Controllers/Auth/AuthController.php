@@ -4,8 +4,9 @@ namespace Pshenichniyinfo\AdminPanel\Http\Controllers\Auth;
 
 
 use Illuminate\Support\Facades\Auth;
-use Pshenichniyinfo\AdminPanel\Http\Requests\LoginRequest;
 use Pshenichniyinfo\AdminPanel\Http\Controllers\Controller;
+use Pshenichniyinfo\AdminPanel\Http\Middleware\AuthenticatesAdmin;
+use Pshenichniyinfo\AdminPanel\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {

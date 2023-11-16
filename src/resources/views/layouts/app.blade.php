@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="generator" content="Hugo 0.87.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="{{ asset('admin-panel/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin-panel/plugins/fontawesome-free-6.4.2-web/css/all.min.css') }}">
 
     <script src="{{ asset('admin-panel/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin-panel/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -27,6 +27,11 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>

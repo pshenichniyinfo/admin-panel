@@ -11,7 +11,7 @@ Route::middleware('web')
         Route::post('login', 'Auth\AuthController@auth')->name('admin.login.store');
     });
 
-    Route::middleware('auth')->group(function (){
+    Route::middleware('auth_admin')->group(function (){
         Route::get('logout', 'Auth\AuthController@logout')->name('admin.logout');
 
         Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
@@ -22,9 +22,13 @@ Route::middleware('web')
             Route::get('create', 'UserController@create')->name('admin.create');
             Route::post('create', 'UserController@store')->name('admin.store');
         });
-    });
 
-    if (\Illuminate\Support\Facades\File::exists(app()->basePath() . '/routes/admin-panel-route.php')) {
-        require_once app()->basePath() . '/routes/admin-panel-route.php';
-    }
+        if (\Illuminate\Support\Facades\File::exists(app()->basePath() . '/routes/admin-panel-route.php')) {
+            require_once app()->basePath() . '/routes/admin-panel-route.php';
+        }
+    });
 });
+
+Route::get('home', function (){
+    return redirect()->route('admin.dashboard');
+})->name('home');
