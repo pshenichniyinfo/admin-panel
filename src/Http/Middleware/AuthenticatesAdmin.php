@@ -2,13 +2,17 @@
 
 namespace Pshenichniyinfo\AdminPanel\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate;
+use Closure;
 use Illuminate\Http\Request;
 
-class AuthenticatesAdmin extends Authenticate
+class AuthenticatesAdmin
 {
-    protected function redirectTo(Request $request): ?string
+    public function handle(Request $request, Closure $next)
     {
-        return $request->expectsJson() ? null : route('admin.login');
+        if (!auth()->user() || !auth()->user()->hasAnyRole('super-admin')) {
+            return redirect()->route('admin.login');
+        }
+
+        return $next($request);
     }
 }

@@ -16,7 +16,7 @@ class Seeder
             'password' => Hash::make($password),
         ]);
 
-        Role::create(['name' => 'super-admin']);
+        Role::create(['name' => 'super-admin', 'guard_name' => 'web']);
 
         $user->assignRole('super-admin');
     }

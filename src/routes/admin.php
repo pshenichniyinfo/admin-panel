@@ -9,6 +9,7 @@ Route::middleware('web')
     Route::middleware('guest')->group(function (){
         Route::get('login', 'Auth\AuthController@login')->name('admin.login');
         Route::post('login', 'Auth\AuthController@auth')->name('admin.login.store');
+        Route::post('logout', 'Auth\AuthController@logout')->name('admin.logout');
     });
 
     Route::middleware('auth_admin')->group(function (){
@@ -29,6 +30,6 @@ Route::middleware('web')
     });
 });
 
-Route::get('home', function (){
-    return redirect()->route('admin.dashboard');
-})->name('home');
+//Route::get('home', function (){
+//    return redirect()->route('admin.dashboard');
+//})->name('home');

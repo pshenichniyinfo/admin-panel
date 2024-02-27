@@ -3,6 +3,8 @@
 namespace Pshenichniyinfo\AdminPanel\Http\Controllers\Auth;
 
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Pshenichniyinfo\AdminPanel\Http\Controllers\Controller;
 use Pshenichniyinfo\AdminPanel\Http\Middleware\AuthenticatesAdmin;
@@ -23,5 +25,16 @@ class AuthController extends Controller
         }
 
         return redirect("admin.login")->withSuccess('Oppes! You have entered invalid credentials');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login');
     }
 }

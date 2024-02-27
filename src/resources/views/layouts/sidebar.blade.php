@@ -4,7 +4,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="{{ route('admin.dashboard') }}" class="d-block">Alexander Pierce</a>
+                <a href="{{ route('admin.dashboard') }}" class="d-block">
+                    <img src="/admin-panel//img/03_AP_R@2x.png" alt="">
+                    Admin Panel
+                </a>
             </div>
         </div>
 

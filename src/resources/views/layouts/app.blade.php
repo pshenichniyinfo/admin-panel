@@ -28,7 +28,7 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                <a class="nav-link" href="{{ route('admin.logout') }}">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </a>
             </li>
@@ -50,12 +50,15 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
+                    <div class="col-sm-12">
+                        @include('admin-panel::layouts.breadcrumb')
+                    </div>
                     <div class="col-sm-6">
                         <h1 class="m-0">@yield('header_title')</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
-                        @include('admin-panel::layouts.breadcrumb')
-                    </div><!-- /.col -->
+                        @yield('head_left_btn')
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -85,5 +88,7 @@
         </div>
     </footer>
 </div>
+@stack('scripts')
+@stack('styles')
 </body>
 </html>

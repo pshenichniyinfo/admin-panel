@@ -6,7 +6,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ route('admin.login') }}">Admin</a>
+            Admin
         </div>
         <div class="card">
             <div class="card-body login-card-body">
@@ -32,10 +32,6 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    @lang('admin-panel::auth.login.remember')
-                                </label>
                             </div>
                         </div>
                         <!-- /.col -->
@@ -47,10 +43,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
-                <p class="mb-1">
-                    <a href="forgot-password.html">@lang('admin-panel::auth.login.forgot')</a>
-                </p>
             </div>
             <!-- /.login-card-body -->
         </div>
