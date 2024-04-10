@@ -37,6 +37,11 @@
                                 @lang('admin-panel::sidebar.users')
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.roles') }}" class="nav-link">
+                                @lang('admin-panel::sidebar.roles')
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <x-admin-panel::menu />

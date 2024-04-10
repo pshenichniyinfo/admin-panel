@@ -4,6 +4,7 @@ namespace Pshenichniyinfo\AdminPanel\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Pshenichniyinfo\AdminPanel\commands\AddPermissionCommand;
 use Pshenichniyinfo\AdminPanel\commands\InstallCommand;
 use Pshenichniyinfo\AdminPanel\Http\Middleware\AuthenticatesAdmin;
 use Pshenichniyinfo\AdminPanel\View\Components\Menu;
@@ -39,6 +40,7 @@ class AdminPanelServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallCommand::class,
+                AddPermissionCommand::class,
             ]);
         }
 
@@ -61,6 +63,15 @@ class AdminPanelServiceProvider extends ServiceProvider
         if (!File::exists($destinationPath)) {
             $this->publishes([
                 $sourcePath => config_path('admin-panel.php'),
+            ]);
+        }
+
+        $sourcePathApp = __DIR__.'/../config/admin-panel-app.php';
+        $destinationPathApp = config_path('admin-panel-app.php');
+
+        if (!File::exists($destinationPathApp)) {
+            $this->publishes([
+                $sourcePathApp => config_path('admin-panel-app.php'),
             ]);
         }
 

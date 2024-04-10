@@ -27,6 +27,7 @@ class InstallCommand extends Command implements Isolatable
         );
 
         Seeder::addSuperAdmin($email, $password);
+        Seeder::addPermissions();
 
         info('Package installed successfully.');
     }

@@ -20,7 +20,7 @@ class AuthController extends Controller
     public function auth(LoginRequest $request)
     {
         if (Auth::attempt($request->validated())) {
-            return redirect()->route('admin.dashboard')
+            return redirect()->route(config('admin-panel-app.homepage_redirect'))
                 ->with('You have Successfully loggedin');
         }
 

@@ -9,7 +9,7 @@ class AuthenticatesAdmin
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->user() || !auth()->user()->hasAnyRole('super-admin')) {
+        if (!auth()->user()) {
             return redirect()->route('admin.login');
         }
 
