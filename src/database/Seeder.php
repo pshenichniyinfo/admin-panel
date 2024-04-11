@@ -2,6 +2,7 @@
 
 namespace Pshenichniyinfo\AdminPanel\database;
 
+use Illuminate\Support\Facades\DB;
 use Pshenichniyinfo\AdminPanel\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
@@ -24,29 +25,38 @@ class Seeder
 
     public static function addPermissions(): void
     {
-        Permission::create(['name' => 'show product']);
-        Permission::create(['name' => 'edit product']);
-        Permission::create(['name' => 'delete product']);
-        Permission::create(['name' => 'add product']);
+        $permissions = [
+            'show product',
+            'edit product',
+            'delete product',
+            'add product',
+            'show order',
+            'edit order',
+            'delete order',
+            'add order',
+            'show user',
+            'edit user',
+            'delete user',
+            'add user',
+            'show role',
+            'edit role',
+            'delete role',
+            'add role',
+            'show permission',
+            'edit permission',
+            'delete permission',
+            'add permission',
+        ];
 
-        Permission::create(['name' => 'show order']);
-        Permission::create(['name' => 'edit order']);
-        Permission::create(['name' => 'delete order']);
-        Permission::create(['name' => 'add order']);
+        $role = Role::first();
 
-        Permission::create(['name' => 'show user']);
-        Permission::create(['name' => 'edit user']);
-        Permission::create(['name' => 'delete user']);
-        Permission::create(['name' => 'add user']);
+        foreach ($permissions as $permission) {
+            $per = Permission::firstOrCreate(['name' => $permission]);
 
-        Permission::create(['name' => 'show role']);
-        Permission::create(['name' => 'edit role']);
-        Permission::create(['name' => 'delete role']);
-        Permission::create(['name' => 'add role']);
-
-        Permission::create(['name' => 'show permission']);
-        Permission::create(['name' => 'edit permission']);
-        Permission::create(['name' => 'delete permission']);
-        Permission::create(['name' => 'add permission']);
+            DB::table('role_has_permissions')
+                ->updateOrInsert(
+                    ['role_id' => $role->id, 'permission_id' => $per->id]
+                );
+        }
     }
 }
